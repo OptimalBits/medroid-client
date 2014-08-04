@@ -1,0 +1,12 @@
+{
+  "name": "Mediatranscoder",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "bull": "*",
+    "hiredis": "^0.1.17",
+    "redis": "^0.7.2",
+  },
+  "devDependencies": {
+  }
+}
