@@ -12,11 +12,10 @@
 "use strict";
 
 var redis = require('redis'),
-   config = require('./config.js'),
     Queue = require('bull'),
      util = require('util');
    
-var TranscoderConfig = require('./config_mediatranscoder.js');    
+var TranscoderConfig = require('./presets.js');    
 
 var JOB_QUEUE_NAME = 'Medroid';
 
