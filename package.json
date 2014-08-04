@@ -1,7 +1,6 @@
 {
   "name": "medroid-client",
   "version": "0.0.1",
-  "private": true,
   "dependencies": {
     "bull": "*",
     "hiredis": "^0.1.17",
