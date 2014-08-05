@@ -1,6 +1,16 @@
 {
   "name": "medroid-client",
-  "version": "0.0.1",
+  "version": "0.0.3",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/manast/medroid-client.git"
+  },
+  "author": "Manuel Astudillo",
+  "license": "BSD",
+  "bugs": {
+    "url": "https://github.com/manast/medroid-client/issues"
+  },
+  "homepage": "https://github.com/manast/medroid-client",
   "dependencies": {
     "bull": "*",
     "hiredis": "^0.1.17",
