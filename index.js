@@ -25,30 +25,7 @@ var JOB_QUEUE_NAME = 'Medroid';
 function progressChannel(clientId){
   return 'medroid:'+clientId +':progress:';
 }
-   
-/**
-  MailerBotClient.
 
-  Returns an instance of a mailerbot client.
-
-  opts: {
-    redis: {
-      port: 6379,
-      host: localhost
-      opts: {}
-    }
-  }
-*/
-function MailerBotClient(opts){
-  if(!this){
-    return new MailerBotClient(opts);
-  }
-  this.clientId = opts.clientId || 'default';
-  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
-
-  this.resultsQueueName = RESULTS_QUEUE_PREFIX+this.clientId;
-  this.resultsQueue = Queue(this.resultsQueueName, opts);
-}
 //------------------------------------------------------------------------------
 // 
 //  Medroid Client
