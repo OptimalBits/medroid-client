@@ -26,19 +26,51 @@ function progressChannel(clientId){
   return 'medroid:'+clientId +':progress:';
 }
    
+/**
+  MailerBotClient.
+
+  Returns an instance of a mailerbot client.
+
+  opts: {
+    redis: {
+      port: 6379,
+      host: localhost
+      opts: {}
+    }
+  }
+*/
+function MailerBotClient(opts){
+  if(!this){
+    return new MailerBotClient(opts);
+  }
+  this.clientId = opts.clientId || 'default';
+  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
+
+  this.resultsQueueName = RESULTS_QUEUE_PREFIX+this.clientId;
+  this.resultsQueue = Queue(this.resultsQueueName, opts);
+}
 //------------------------------------------------------------------------------
 // 
 //  Medroid Client
-//
+// opts: {
+//   redis: {
+//     port: 6379,
+//     host: localhost
+//     opts: {}
+//   }
+//  }
 //------------------------------------------------------------------------------
 var Medroid = function Medroid(opts){
+  if(!this){
+    return new Medroid(opts);
+  }
   this.clientId = opts.clientId || 'default';
-  this.jobQueue = Queue(JOB_QUEUE_NAME, opts.redisPort, opts.redisHost);
+  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
   this.resultsQueueName = 'Medroid-client-'+this.clientId;
-  this.resultsQueue = Queue(this.resultsQueueName);
+  this.resultsQueue = Queue(this.resultsQueueName, opts);
 
   // Open a sub channel with redis for receiving progress events.
-  this.subClient = redis.createClient(opts.redisPort, opts.redisHost)
+  this.subClient = redis.createClient(opts.redis.port, opts.redis.host)
 
   var channel = progressChannel(this.clientId);
   this.subClient.subscribe(channel);
