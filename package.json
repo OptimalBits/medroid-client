@@ -3,14 +3,14 @@
   "version": "0.0.3",
   "repository": {
     "type": "git",
-    "url": "git://github.com/manast/medroid-client.git"
+    "url": "git://github.com/OptimalBits/medroid-client.git"
   },
   "author": "Manuel Astudillo",
   "license": "BSD",
   "bugs": {
-    "url": "https://github.com/manast/medroid-client/issues"
+    "url": "https://github.com/OptimalBits/medroid-client/issues"
   },
-  "homepage": "https://github.com/manast/medroid-client",
+  "homepage": "https://github.com/OptimalBits/medroid-client",
   "dependencies": {
     "bull": "*",
     "hiredis": "^0.1.17",
