@@ -99,7 +99,9 @@ Medroid.prototype.transcode = function(mimeType, args){
 
 Medroid.prototype.transcodeVideo = function(opts){
   var preset = opts.account.plan.quota.videoPreset;
-  return this._addJob("Video", TranscoderConfig.video[preset], opts);
+  var config = TranscoderConfig.video[preset];
+  config.preview = TranscoderConfig.video['320p'];
+  return this._addJob("Video", config, opts);
 }
 
 Medroid.prototype.transcodeImage = function(opts){
