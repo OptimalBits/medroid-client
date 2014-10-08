@@ -117,7 +117,7 @@ var VideoPresets = {
     preset: 'medium',
     videoProfile: 'high',
     extra: []
-  }
+  },
   '240p':{
     width: '240',
     height: '240',
