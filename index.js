@@ -60,10 +60,16 @@ var Medroid = function Medroid(opts){
 
   this.receiveResult(function(job, done){
     try{
-      _this.emit('completed', job.data.jobData, job.data.result);
+      if(job.data.result.err){
+        var err = Error(job.data.result.err.message);
+        err.stack = job.data.result.err.stack;
+        _this.emit('failed', job.data.jobData, err);
+      }else{
+        _this.emit('completed', job.data.jobData, job.data.result);  
+      }
       done();
     }catch(err){
-      console.log(err)
+      _this.emit('failed', job.data.jobData, err);
       done(err);
     }
   });
