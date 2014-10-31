@@ -122,12 +122,16 @@ Medroid.prototype.transcodeAudio = function(opts){
 
 Medroid.prototype.transcodePPT = function(opts){
   var preset = opts.account.plan.quota.pptPreset;
-  return this._addJob("Powerpoint", TranscoderConfig.video[preset], opts);
+  var config = TranscoderConfig.video[preset];
+  config.preview = TranscoderConfig.video['320p'];
+  return this._addJob("Powerpoint", config, opts);
 }
 
 Medroid.prototype.transcodePDF = function(opts){
   var preset = opts.account.plan.quota.pdfPreset;
-  return this._addJob("PDF", TranscoderConfig.video[preset], opts);
+  var config = TranscoderConfig.video[preset];
+  config.preview = TranscoderConfig.video['320p'];
+  return this._addJob("PDF", config, opts);
 }
 
 Medroid.prototype._addJob = function(mediaType, config, args){
