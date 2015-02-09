@@ -135,6 +135,13 @@ var VideoPresets = {
 }
 
 var ImagePresets = {
+  '1080p': {
+    formats: ['png','gif','jpg','jpeg'],
+    default:'jpg',
+    width: '1080',
+    height: '1080',
+    format: 'jpg'
+  },
   '720p': {
     formats: ['png','gif','jpg','jpeg'],
     default:'jpg',
