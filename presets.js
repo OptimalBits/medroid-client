@@ -49,10 +49,10 @@ var VideoPresets = {
     extra: []
   },
   '1080p':{
-    width: '720',
-    height: '720',
+    width: '1080',
+    height: '1080',
     format: 'mp4',
-    videoBitrate: '1750k',
+    videoBitrate: '1850k',
     videoCodec: 'libx264',
     audioBitrate: '128000',
     audioCodec: 'acc',
