@@ -83,9 +83,15 @@ Medroid.prototype.transcode = function(mimeType, args){
   switch(mime[0]) {
     case 'video':
       args.outputPath = args.outputPath + '.mp4'; // Hack
+      if(args.previewPath){
+        args.previewPath += '.mp4';
+      }
       return this.transcodeVideo(args);
     case 'image':
       args.outputPath = args.outputPath + '.jpg'; // Hack
+      if(args.previewPath){
+        args.previewPath += '.jpg';
+      }
       return this.transcodeImage(args);
     case 'audio':
       args.outputPath = args.outputPath + '.mp3'; // Hack
@@ -95,9 +101,15 @@ Medroid.prototype.transcode = function(mimeType, args){
         case 'vnd.openxmlformats-officedocument.presentationml.presentation':
         case 'vnd.ms-powerpoint':
           args.outputPath = args.outputPath + '.mp4'; // Hack
+          if(args.previewPath){
+           args.previewPath += '.mp4';
+          }
           return this.transcodePPT(args);
         case 'pdf': 
           args.outputPath = args.outputPath + '.mp4'; // Hack
+          if(args.previewPath){
+            args.previewPath += '.mp4';
+          }
           return this.transcodePDF(args);
       }
   }
@@ -112,7 +124,9 @@ Medroid.prototype.transcodeVideo = function(opts){
 
 Medroid.prototype.transcodeImage = function(opts){
   var preset = opts.account.plan.quota.imagePreset;
-  return this._addJob("Image", TranscoderConfig.image[preset], opts);
+  var config = TranscoderConfig.image[preset];
+  config.preview = TranscoderConfig.image['320p'];
+  return this._addJob("Image", config, opts);
 }
 
 Medroid.prototype.transcodeAudio = function(opts){
