@@ -163,6 +163,13 @@ var ImagePresets = {
     height: '360',
     format: 'jpg'
   },
+  '320p':{
+    formats: ['png','gif','jpg','jpeg'],
+    default:'jpg',
+    width: '320',
+    height: '320',
+    format: 'jpg',
+  },
   '240p': {
     formats: ['png','gif','jpg','jpeg'],
     default:'jpg',
