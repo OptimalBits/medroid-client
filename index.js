@@ -15,7 +15,7 @@ var redis = require('redis'),
     Queue = require('bull'),
      util = require('util');
    
-var TranscoderConfig = require('./presets.js');    
+var TranscoderConfig = require('./presets.js');
 
 var JOB_QUEUE_NAME = 'Medroid';
 
@@ -115,34 +115,34 @@ Medroid.prototype.transcode = function(mimeType, args){
   }
 }
 
-Medroid.prototype.transcodeVideo = function(opts){
-  var preset = opts.account.plan.quota.videoPreset;
+Medroid.prototype.transcodeVideo = function(opts){ 
+  var preset =  opts.presets ? opts.presets.video : opts.account.plan.quota.videoPreset;
   var config = TranscoderConfig.video[preset];
   config.preview = TranscoderConfig.video['320p'];
   return this._addJob("Video", config, opts);
 }
 
 Medroid.prototype.transcodeImage = function(opts){
-  var preset = opts.account.plan.quota.imagePreset;
+  var preset =  opts.presets ? opts.presets.image : opts.account.plan.quota.imagePreset;
   var config = TranscoderConfig.image[preset];
   config.preview = TranscoderConfig.image['320p'];
   return this._addJob("Image", config, opts);
 }
 
 Medroid.prototype.transcodeAudio = function(opts){
-  var preset = opts.account.plan.quota.audioPreset || 'high';
+  var preset =  opts.presets ? opts.presets.audio : opts.account.plan.quota.audioPreset || 'high';
   return this._addJob("Audio", TranscoderConfig.audio[preset], opts);
 }
 
 Medroid.prototype.transcodePPT = function(opts){
-  var preset = opts.account.plan.quota.pptPreset;
+  var preset =  opts.presets ? opts.presets.ppt : opts.account.plan.quota.pptPreset;
   var config = TranscoderConfig.video[preset];
   config.preview = TranscoderConfig.video['320p'];
   return this._addJob("Powerpoint", config, opts);
 }
 
 Medroid.prototype.transcodePDF = function(opts){
-  var preset = opts.account.plan.quota.pdfPreset;
+  var preset =  opts.presets ? opts.presets.pdf : opts.account.plan.quota.pdfPreset;
   var config = TranscoderConfig.video[preset];
   config.preview = TranscoderConfig.video['320p'];
   return this._addJob("PDF", config, opts);
