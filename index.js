@@ -111,8 +111,14 @@ Medroid.prototype.transcode = function(mimeType, args){
             args.previewPath += '.mp4';
           }
           return this.transcodePDF(args);
+        case 'zip':
+          return this.transcodeZip(args);
       }
   }
+}
+
+Medroid.prototype.transcodeZip = function(opts){ 
+  return this._addJob("Zip", undefined, opts);
 }
 
 Medroid.prototype.transcodeVideo = function(opts){ 
