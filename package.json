@@ -12,8 +12,7 @@
   },
   "homepage": "https://github.com/OptimalBits/medroid-client",
   "dependencies": {
-    "bull": "*",
-    "hiredis": "^0.1.17",
-    "redis": "^0.7.2"
+    "bull": "^3.3.8",
+    "redis": "^2.8.0"
   }
 }
