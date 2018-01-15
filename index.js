@@ -47,7 +47,7 @@ var Medroid = function Medroid(opts){
   this.resultsQueue = Queue(this.resultsQueueName, opts);
 
   // Open a sub channel with redis for receiving progress events.
-  this.subClient = new Redis(opts);
+  this.subClient = new Redis(opts.redis);
 
   var channel = progressChannel(this.clientId);
   this.subClient.subscribe(channel);
