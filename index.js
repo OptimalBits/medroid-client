@@ -11,7 +11,7 @@
 */
 "use strict";
 
-var redis = require('redis'),
+var Redis = require('ioredis'),
     Queue = require('bull'),
      util = require('util');
    
@@ -47,7 +47,7 @@ var Medroid = function Medroid(opts){
   this.resultsQueue = Queue(this.resultsQueueName, opts);
 
   // Open a sub channel with redis for receiving progress events.
-  this.subClient = redis.createClient(opts.redis.port, opts.redis.host)
+  this.subClient = new Redis(opts);
 
   var channel = progressChannel(this.clientId);
   this.subClient.subscribe(channel);

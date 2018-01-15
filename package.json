@@ -13,6 +13,6 @@
   "homepage": "https://github.com/OptimalBits/medroid-client",
   "dependencies": {
     "bull": "^3.3.8",
-    "redis": "^2.8.0"
+    "ioredis": "^3.2.2"
   }
 }
