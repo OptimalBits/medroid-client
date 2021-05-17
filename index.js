@@ -17,8 +17,6 @@ var Redis = require("ioredis"),
 
 var TranscoderConfig = require("./presets.js");
 
-var JOB_QUEUE_NAME = "Medroid";
-
 //
 //  Returns the channel for informing on job progress.
 //
@@ -37,12 +35,15 @@ function progressChannel(clientId) {
 //   }
 //  }
 //------------------------------------------------------------------------------
-var Medroid = function Medroid(opts) {
+var Medroid = function Medroid(opts, queueName) {
   if (!this) {
     return new Medroid(opts);
   }
+
+  queueName = queueName || "Medroid";
+
   this.clientId = opts.clientId || "default";
-  this.jobQueue = Queue(JOB_QUEUE_NAME, opts);
+  this.jobQueue = Queue(queueName, opts);
 
   this.jobQueue.on("error", (err) => {
     console.error("Job Queue Error", err);
