@@ -37,7 +37,7 @@ function progressChannel(clientId) {
 //------------------------------------------------------------------------------
 var Medroid = function Medroid(opts, queueName) {
   if (!this) {
-    return new Medroid(opts);
+    return new Medroid(opts, queueName);
   }
 
   queueName = queueName || "Medroid";
